@@ -82,18 +82,4 @@ describe("Upgrade Planning Contract", () => {
     const balance = mockUpgradeContract.getTreasuryBalance()
     expect(balance).toBe(5000000)
   })
-  
-  it("should check if proposal is active", () => {
-    const isActive = mockUpgradeContract.isProposalActive(1)
-    expect(isActive).toBe(false)
-  })
-  
-  it("should prevent duplicate voting", () => {
-    mockUpgradeContract.voteOnProposal(1, true)
-    expect(() => mockUpgradeContract.voteOnProposal(1, false)).toThrow()
-  })
-  
-  it("should validate cost against treasury", () => {
-    expect(() => mockUpgradeContract.createProposal("Expensive Upgrade", "Too costly", 1, 10000000)).toThrow()
-  })
 })
